@@ -1,6 +1,7 @@
 import { View, Animated, PanResponder, StyleSheet, Dimensions } from 'react-native';
 import MapView, { Polyline, Marker } from 'react-native-maps';
 import React, { useState, useEffect, useRef } from 'react';
+import ServiceAlerts from '@/components/ServiceAlerts';
 
 // just example data for now...
 
@@ -17,7 +18,7 @@ const trainStops = [
 function DraggableContainer(props: any) {
   // Suggested by AI - good to keep in mind.
   // const position = useRef(new Animated.ValueXY()).current;
-
+  const [removeAlerts, setRemoveAlerts] = useState(false);
   // Drag gestures
   const panResponder = useRef(
     PanResponder.create({
@@ -26,6 +27,14 @@ function DraggableContainer(props: any) {
         // Calculate the new Y position
         let newG = gestureState.dy;
         let newY = evt.nativeEvent.pageY;
+
+        // if the mouse y is near the height of the screen - the current height of the container
+        var collisionArea = props.height;
+        const range = 100;
+        // console.log(newY > collisionArea - range, newY < collisionArea + range)
+        if (!(newY > collisionArea - range && newY < collisionArea + range)) {
+          return false
+        }
 
         // Prevent container from going too far off
         let max = 100;
@@ -38,13 +47,16 @@ function DraggableContainer(props: any) {
           newY = min;
         }
 
-        console.log(newY, 'newY ', newG, 'newG')
+        setRemoveAlerts(true)
+
+        // console.log(newY, 'newY ', newG, 'newG')
         // position.setValue({ x: 0, y: newG - 35});
         // newY -= 40;
         props.setHeight(Dimensions.get('window').height - newY)
       },
       onPanResponderRelease: () => {
         // empty... (when mouse released)
+        setRemoveAlerts(false)
       },
     })
   ).current;
@@ -61,6 +73,7 @@ function DraggableContainer(props: any) {
         ]}
         {...panResponder.panHandlers}
       >
+        {removeAlerts ? <></> : <ServiceAlerts></ServiceAlerts>}
       </Animated.View>
     </View>
   );
@@ -78,7 +91,7 @@ export default function App() {
   }, [draggableHeight]);
   
   function handleTapOutsideView() {
-    console.log(draggableHeight, 'dh')
+    // console.log(draggableHeight, 'dh')
     setDraggableHeight(Dimensions.get('window').height * 0.2)
   }
 
@@ -103,12 +116,6 @@ export default function App() {
         ))}
       </MapView>
       <DraggableContainer height={draggableHeight} setHeight={setDraggableHeight}></DraggableContainer>
-      {/* <View style={{
-        width: "100%",
-        height: "40%",
-        backgroundColor: 'skyblue',
-        borderRadius: 10,
-      }}></View> */}
     </View>
   );
 }
