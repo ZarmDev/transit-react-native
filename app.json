@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "TransitApp",
-    "slug": "TransitApp",
+    "slug": "TransitAppDebug",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ddev11.TransitAppDebug"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +32,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "8163a953-632b-4f95-b2c2-03cc383a7c7c"
+      }
     }
   }
 }

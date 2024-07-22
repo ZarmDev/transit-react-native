@@ -1,50 +1,22 @@
-# Welcome to your Expo app 👋
+# TransitApp
+A transit app for NYC.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+It was built for Cider and also to learn React Native.
 
-## Get started
+# What it uses
+- The transitHelper library (https://github.com/ZarmDev/transitHelper).
+- Openstreetmap data
+- Leaflet.js
+- It uses React WebView to render the map
 
-1. Install dependencies
+# Thanks
+All the unzip code is thanks to this github repo: (I couldn't figure it out for days because of the errors, so I love this repo)
+https://github.com/wodin/expo-zip-example/blob/main/App.js
 
-   ```bash
-   npm install
-   ```
+A lot of AI was used to debug and to create functions like DraggableContainer.
 
-2. Start the app
+Originally, I was trying to use the react-native-maps library but I really didn't want to pay Google Maps so
+thanks OpenStreetMaps!
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# NOTE FOR MYSELF
+https://egghead.io/lessons/react-native-create-a-development-build-for-android-with-eas
